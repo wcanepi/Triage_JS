@@ -1,27 +1,27 @@
-// Declaring array
+// Declare an array
 const patientList = [
   'Paul',
   'Jan',
   'Tri',
   'Maryam'
 ];
-var neverComplete;
-alert(patientList);
+var runUntil;
 
-// Create function to loop
+// Create function to do the looping
 function loopFunc() {
   // Populate the command prompt variables
-  const command = prompt('Choose one: update, delete, add, reorder');
-  // Use s Switch statement to handle choices
+ const command = prompt('Choose one: update, delete, add, reorder');
+ 
+ // Use a Switch statement to handle choices
   switch (command.toLowerCase()) { // Set the command to lowercase
     case 'update': // Update the list
       // Get the patient's name
-      var name = prompt("Enter the Patient's name");
+      const pname = prompt('UPDATE: Enter the Patients name');
       // Loop though the array to find the name
-      for (var i = 0; i < patientList.length; i++) {
+      for (let i = 0; i < patientList.length; i++) {
         // If the patients name is found, ask for the new name and update it
-        if (patientList[i].toUpperCase() === name.toUpperCase()) {
-          patientList[i] = prompt('What is the New name?');
+        if (patientList[i].toUpperCase() === pname.toUpperCase()) {
+          patientList[i] = prompt('UPDATE: What is the New name?');
           alert(patientList);
           break;
         }
@@ -31,13 +31,14 @@ function loopFunc() {
         alert('That Patient was not found!');
       }
       break;
-    case 'delete': // Deleting from list
+
+    case 'delete': // Delete Patient from list
       // Get the patient's name
-      var name = prompt("What is the Patient's name?");
+      const delname = prompt('DELETE: What is the Patients name?');
       // Loop though the array to find the name
-      for (var i = 0; i < patientList.length; i++) {
+      for (let i = 0; i < patientList.length; i++) {
         // If the name is found, delete that element in the array
-        if (patientList[i].toUpperCase() === name.toUpperCase()) {
+        if (patientList[i].toUpperCase() === delname.toUpperCase()) {
           patientList.splice(i, 1);
           alert(patientList);
           break;
@@ -45,32 +46,33 @@ function loopFunc() {
       }
       // Patient's name was not found in the list
       if (i === patientList.length) {
-        alert('Patient not found!');
+        alert('Patient was not found!');
       }
       break;
-    case 'add': // Adding to list
+
+    case 'add': // Add Patient to list
       // Get the patient's name
-      var name = prompt("What is the Patient's name?");
-      // If no value was entered, print an error message
-      // Otherwise add name to the array
-      if (!name) {
-        alert('Patient not found!');
+      const newname = prompt('ADD: What is the new Patients name?');
+      // If no value was entered, print an error message. Otherwise add name to the array
+      if (!newname) {
+        alert('You forgot to add a Patient name!');
       } else {
-        patientList.push(name);
+        patientList.push(newname);
         alert(patientList);
       }
       break;
-    case 'reorder': // Reorder the list
+      
+    case 'reorder': // Reorder the list of Patients
       // Get the first patient's name
-      var name1 = prompt("What is the name of the First patient?");
-      // Loop though the array to find the first patient's name
-      for (var i = 0; i < patientList.length; i++) {
+      const name1 = prompt('REORDER: What is the name of the First patient?');
+      // Loop thru the array to find the first patient's name
+      for (let i = 0; i < patientList.length; i++) {
         // If the first patient's name is found, continue
         if (patientList[i].toUpperCase() === name1.toUpperCase()) {
           // Get the second patient's name
-          var name2 = prompt("What is the name of the Second patient?");
+          const name2 = prompt("REORDER: What is the name of the Second patient?");
           // Loop though the array to find the second patient's name
-          for (var j = 0; j < patientList.length; j++) {
+          for (let j = 0; j < patientList.length; j++) {
             // If the second patient's name is found, swap the values in the array
             if (patientList[j].toUpperCase() === name2.toUpperCase()) {
               patientList[i] = name2;
@@ -94,10 +96,10 @@ function loopFunc() {
       }
       break;
     default: // Switch statement defaults to display an error message
-      alert('Patient was not found!');
+      alert('Oops try again!');
   }
 }
-// Creating a loop that calls loopFunc
-while (!neverComplete) {
+// Create loop that calls loopFunc
+while (!runUntil) {
   loopFunc();
 }               
